@@ -1,22 +1,44 @@
 import { Grid } from "@mui/material";
+import Navigation from "../components/Navigation";
+import HomePage from "../components/HomePage";
+import RightNavigation from "../components/RightNavigation";
+import { Route, Routes } from "react-router-dom";
+import Profile from "../components/Profile";
 
 const Home = () => {
   return (
     <>
       <div>
-        <Grid
-          container
-          xs={12}
-          className="px-4 lg:px-30 w-full justify-between"
-        >
-          <Grid xs={0} lg={2.4} className="hidden lg:block w-full relative">
-            first part
+        <Grid container className="px-4 lg:px-32 w-full justify-between">
+          {/* Navigation */}
+          <Grid
+            item
+            xs={12}
+            sm={false}
+            lg={2.4}
+            className="hidden lg:block w-full relative"
+          >
+            <Navigation />
           </Grid>
-          <Grid xs={12} lg={6} className="w-full relative">
-            first part
+
+          {/* Main Content */}
+          <Grid item xs={12} sm={12} md={12} lg={6} className="w-full relative">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
           </Grid>
-          <Grid xs={0} lg={3.5} className="hidden lg:block w-full">
-            first part
+
+          {/* Right Navigation */}
+          <Grid
+            item
+            xs={12}
+            sm={false}
+            md={false}
+            lg={3}
+            className="hidden lg:block w-full relative"
+          >
+            <RightNavigation />
           </Grid>
         </Grid>
       </div>
